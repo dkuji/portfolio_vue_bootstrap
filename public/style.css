@@ -1,0 +1,63 @@
+.image-on-text{
+  position: relative;
+}
+
+.image-on-text p{
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+@media (min-width: 992px) {
+  .image-on-text p {
+    font-size: 7.0rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .image-on-text p {
+    font-size: 4.0rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .image-on-text p {
+    font-size: 2.0rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .image-on-text p {
+    font-size: 1.0rem;
+  }
+}
+
+body {
+  padding-top: 56px;
+}
+
+#profile {
+  margin-top: -56px;
+  padding-top: 56px;
+}
+
+#skill {
+  margin-top: -56px;
+  padding-top: 56px;
+}
+
+#link {
+  margin-top: -56px;
+  padding-top: 56px;
+}
+
+#contact {
+  margin-top: -56px;
+  padding-top: 56px;
+}

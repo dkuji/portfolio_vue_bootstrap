@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Load required Bootstrap and BootstrapVue CSS -->
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+  <link type="text/css" rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+    crossorigin="anonymous" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="fixed-top">
+      <b-navbar toggleable="lg" type="dark" variant="dark">
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav right>
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item href="#profile">PROFILE</b-nav-item>
+            <b-nav-item href="#skill">SKILL</b-nav-item>
+            <b-nav-item href="#link">LINK</b-nav-item>
+            <b-nav-item href="#contact">CONTACT</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </div>
+    <div>
+      <div class="image-on-text mb-5">
+        <b-img src="top.jpg" fluid-grow alt="Responsive image"></b-img>
+        <p class="text-nowrap">dkuji's portfolio</p>
+      </div>
+    </div>
+
+    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
+      <div class="bg-white">
+        <p id="profile" class="h2 text-center">PROFILE</p>
+        <p class="h3 text-muted text-center">ABOUT ME</p>
+        <div class="mb-5">
+          <b-container fluid>
+            <b-row class="justify-content-md-center text-break">
+              <b-col sm="12" xs="12" md="6" lg="6" xl="6">
+                <p v-for="a in about_me" :key="a.desc">
+                  {{a.desc}}
+                </p>
+              </b-col>
+              <b-col sm="12" xs="12" md="6" lg="6" xl="6">
+                <b-img thumbnail fluid src="dkuji.jpeg" alt="Responsive image" rounded="circle" width="275" center
+                  height="275">
+                </b-img>
+              </b-col>
+              <div class="w-100"></div>
+            </b-row>
+          </b-container>
+        </div>
+        <p class="h3 text-muted text-center">WORK EXPERIENCE</p>
+        <template>
+          <div>
+            <b-table responsive striped :items="work_experience_items"
+              style="white-space:pre-wrap; word-wrap:break-word;"></b-table>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
+      <div class="bg-light">
+        <p id="skill" class="h2 text-center">SKILL</p>
+        <p class="h3 text-muted text-center">WHAT CAN I DO?</p>
+        <template>
+          <div>
+            <b-table responsive striped :items="skill_items"></b-table>
+          </div>
+        </template>
+        <p class="h3 text-muted text-center">CERTIFICATE</p>
+        <template>
+          <div>
+            <b-table responsive striped :items="cert_items"></b-table>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
+      <div class="bg-white">
+        <p id="link" class="h2 text-center">LINK</p>
+        <b-row class="text-center">
+          <b-col>
+            <a :href="github_link"><i class="fab fa-github-square fa-3x pl-3 pr-3"></i></a>
+            <a :href="twitter_link"><i class="fab fa-twitter fa-3x pl-3 pr-3"></i></a>
+            <a :href="facebook_link"><i class="fab fa-facebook-square fa-3x pl-3 pr-3"></i></a>
+          </b-col>
+        </b-row>
+      </div>
+    </div>
+
+    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5 text-center">
+      <div class="bg-light">
+        <p id="contact" class="h2 text-center">CONTACT</p>
+        <p>For job offers, please contact me on Twitter DM.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
+<style></style>
+
+<!-- load bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<!-- load popper-->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+
+<!-- load portal-vue -->
+<script src="http://unpkg.com/vue/dist/vue.js"></script>
+<script src="http://unpkg.com/portal-vue"></script>
+
+<!-- Load polyfills to support older browsers -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
+  crossorigin="anonymous"></script>
+
+<!-- load vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<!-- Load Vue followed by BootstrapVue -->
+<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      about_me: [
+        { desc: 'Hi, I\'m dkuji.' },
+        { desc: 'I\'m Infrastructure developer. Since I started my journey as a developer in 2011,' },
+        { desc: 'I have built infrastructure for many projects with System Integrator. And Edtech Startup builds and operates a cloud-native infrastructure.' }
+      ],
+      work_experience_items: [
+        { Period: '2011/4 ~ 2017/8', Corp: 'baudroie.inc.', summary: 'I have built, operated and maintained many Linux servers in various corporate systems.' },
+        { Period: '2017/9 ~ 2019/11', Corp: 'manabo inc.', summary: `Building, operating and maintaining manabo\'s infrastructure(use GCP, AWS).\nmanabo is app for real-time, interactive tutoring on demand` },
+        {
+          Period: '2019/11 ~', Corp: 'SoftBank Corp.', summary: `CI/CD infrastructure in an on-premises environment.\nPromotion of operation automation using Python 3`
+        },
+      ],
+      cert_items: [
+        { sponsor: 'Cisco', name: 'CCNA', "acquisition date": '2010' },
+        { sponsor: 'Cisco', name: 'CCNP', "acquisition date": '2011' },
+        { sponsor: 'IPA', name: 'Security Specialist Examination	', "acquisition date": '2015' },
+      ],
+      skill_items: [
+        { name: 'Network', what: 'Qualified but with little or no work experience', level: 'No work experience' },
+        { name: 'Ansible', what: 'Provisioning of less than 100 servers, testing with molecules, and', level: 'Work experience' },
+        { name: 'Terraform', what: 'AWS, GCP Resource Management', level: 'Work experience' },
+        { name: 'AWS', what: 'Managing and operating your web application infrastructure with AWS', level: 'Work experience' },
+        { name: 'GCP', what: 'Managing and operating your web application infrastructure with GCP', level: 'Work experience' },
+        { name: 'Kubernetes', what: 'Designing, building and operating k8s for Rails applications using GKE', level: 'Work experience' },
+        { name: 'Python3', what: 'Scripts for automating tasks', level: 'Work experience' },
+        { name: 'Django', what: 'Building Web Applications with django', level: 'Work experience' },
+        { name: 'CI/CD', what: 'Building and operating CI/CD pipeline with CircleCI and Gitlab Runner', level: 'Work experience' },
+        { name: 'HTML, CSS, JS', what: 'Building This web site', level: 'hobby' },
+        { name: 'Vue.js', what: 'Building This web site', level: 'hobby' },
+      ],
+      github_link: 'https://github.com/dkuji',
+      twitter_link: 'https://twitter.com/ddkuji',
+      facebook_link: 'https://www.facebook.com/dkuji'
+    }
+  })
+</script>
