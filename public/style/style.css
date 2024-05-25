@@ -61,3 +61,12 @@ body {
   margin-top: -56px;
   padding-top: 56px;
 }
+
+.icon {
+  background: url('images/linkedin.svg');
+  /* background-color: red; */
+}
+
+[v-cloak] {
+  display: none;
+}
