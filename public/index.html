@@ -7,7 +7,7 @@
   <!-- Load required Bootstrap and BootstrapVue CSS -->
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-  <link type="text/css" rel="stylesheet" href="style.css" />
+  <link type="text/css" rel="stylesheet" href="style/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
     integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
     crossorigin="anonymous" />
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div id="app">
+  <div id="app" v-cloak>
     <div class="fixed-top">
       <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -33,25 +33,25 @@
     </div>
     <div>
       <div class="image-on-text mb-5">
-        <b-img src="top.jpg" fluid-grow alt="Responsive image"></b-img>
-        <p class="text-nowrap">dkuji's portfolio</p>
+        <b-img src="images/top.jpg" fluid-grow alt="Responsive image"></b-img>
+        <p class="text-nowrap">dkuji</p>
       </div>
     </div>
 
-    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
+    <div class="container pl-lg-5 pr-lg-5 mb-5">
       <div class="bg-white">
-        <p id="profile" class="h2 text-center">PROFILE</p>
+        <p id="profile" class="h2 text-center pb-5">PROFILE</p>
         <p class="h3 text-muted text-center">ABOUT ME</p>
-        <div class="mb-5">
+        <div class="mb-5" style="white-space:pre-line; word-wrap:break-word;">
           <b-container fluid>
             <b-row class="justify-content-md-center text-break">
               <b-col sm="12" xs="12" md="6" lg="6" xl="6">
                 <p v-for="a in about_me" :key="a.desc">
-                  {{a.desc}}
+                  {{ a.desc }}
                 </p>
               </b-col>
               <b-col sm="12" xs="12" md="6" lg="6" xl="6">
-                <b-img thumbnail fluid src="dkuji.jpeg" alt="Responsive image" rounded="circle" width="275" center
+                <b-img thumbnail fluid src="images/dkuji.jpeg" alt="Responsive image" rounded="circle" width="275" center
                   height="275">
                 </b-img>
               </b-col>
@@ -59,33 +59,36 @@
             </b-row>
           </b-container>
         </div>
-        <p class="h3 text-muted text-center">WORK EXPERIENCE(COMPANY) </p>
+        <!-- <p class="h3 text-muted text-center">WORK EXPERIENCE(COMPANY) </p> -->
+        <p class="h3 text-muted text-center">{{ work_experience_c_title }}</p>
         <template>
           <div>
             <b-table class="mb-5" responsive striped :items="work_experience_c_items"
-              style="white-space:pre-wrap; word-wrap:break-word;"></b-table>
+              style="white-space:pre-line; word-wrap:break-word;"></b-table>
           </div>
         </template>
-        <p class="h3 text-muted text-center">WORK EXPERIENCE(INDIVIDUAL)</p>
+        <p class="h3 text-muted text-center">{{ work_experience_i_title }}</p>
         <template>
           <div>
             <b-table responsive striped :items="work_experience_i_items"
-              style="white-space:pre-wrap; word-wrap:break-word;"></b-table>
+              style="white-space:pre-line; word-wrap:break-word;"></b-table>
           </div>
         </template>
       </div>
     </div>
 
-    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
-      <div class="bg-light">
-        <p id="skill" class="h2 text-center">SKILL</p>
-        <p class="h3 text-muted text-center">WHAT CAN I DO?</p>
+    <div class="container pl-lg-5 pr-lg-5 mb-5">
+      <div class="container bg-white pb-5">
+        <p id="skill" class="h2 text-center pb-5">{{ skill_title }}</p>
+        <p class="h3 text-muted text-center">{{ skill_what_can_i_do }}</p>
         <template>
           <div>
-            <b-table responsive striped :items="skill_items"></b-table>
+            <b-table responsive striped :items="skill_items" style="white-space:pre-line; word-wrap:break-word;"></b-table>
           </div>
         </template>
-        <p class="h3 text-muted text-center">CERTIFICATE</p>
+      </div>
+      <div class="container bg-white">
+        <p class="h3 text-muted text-center">{{ cert_title }}</p>
         <template>
           <div>
             <b-table responsive striped :items="cert_items"></b-table>
@@ -94,21 +97,22 @@
       </div>
     </div>
 
-    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
+    <div class="container pl-lg-5 pr-lg-5 mb-5">
       <div class="bg-white">
         <p id="link" class="h2 text-center">LINK</p>
         <b-row class="text-center">
           <b-col class="pb-5">
             <a :href="github_link"><i class="fab fa-github-square fa-3x pl-3 pr-3"></i></a>
-            <a :href="twitter_link"><i class="fab fa-twitter fa-3x pl-3 pr-3"></i></a>
+            <a :href="twitter_link"><i class="fa-brands fa-square-x-twitter fa-3x pl-3 pr-3"></i></a>
             <a :href="facebook_link"><i class="fab fa-facebook-square fa-3x pl-3 pr-3"></i></a>
+            <a :href="linkedin_link"><i class="fa-brands fa-linkedin fa-3x pl-3 pr-3"></i></a>
           </b-col>
         </b-row>
       </div>
     </div>
 
-    <div class="container-fluid pl-lg-5 pr-lg-5 mb-5 text-center">
-      <div class="bg-light">
+    <div class="container pl-lg-5 pr-lg-5 mb-5 text-center">
+      <div class="bg-white pb-5">
         <p id="contact" class="h2 text-center">CONTACT</p>
         <p>For job offers, please contact me on Twitter DM.</p>
       </div>
@@ -150,49 +154,148 @@
 <!-- Load the following for BootstrapVueIcons support -->
 <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
 
+<!-- ルートVueインスタンス -->
 <script>
-  var app = new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello Vue!',
-      about_me: [
-        { desc: 'Hi, I\'m dkuji.' },
-        { desc: 'I\'m Infrastructure developer. Since I started my journey as a developer in 2011,' },
-        { desc: 'I have built infrastructure for many projects with System Integrator. And Edtech Startup builds and operates a cloud-native infrastructure.' }
-      ],
-      work_experience_c_items: [
-        { Period: '2011/4 ~ 2017/8', Corp: 'baudroie.inc.', summary: 'I have built, operated and maintained many Linux servers in various corporate systems.' },
-        { Period: '2017/9 ~ 2019/11', Corp: 'manabo inc.', summary: `Building, operating and maintaining manabo\'s infrastructure(use GCP, AWS).\nmanabo is app for real-time, interactive tutoring on demand` },
-        {
-          Period: '2019/12 ~', Corp: 'SoftBank Corp.', summary: `・CI/CD infrastructure in an on-premises environment.\n・Promotion of operation automation using Python 3\n・Web application development using python3, django\n・Design and construction of networks and servers for internal operational infrastructure`
-        },
-      ],
-      work_experience_i_items: [
-        { Period: '2019/12 ~ now', summary: `・Design and build infrastructure using Google Cloud Platform\n・Design, construction, and operation of microservices infrastructure using GKE and Istio`},
-        { Period: '2023/01 ~ now', summary: `Design and build infrastructure using Microsoft Azure`},
-        { Period: '2023/12 ~ now', summary: `Design and build infrastructure using Google Cloud Platform`},
-      ],
-      cert_items: [
-        { sponsor: 'Cisco', name: 'CCNA', "acquisition date": '2010' },
-        { sponsor: 'Cisco', name: 'CCNP', "acquisition date": '2011' },
-        { sponsor: 'IPA', name: 'Security Specialist Examination	', "acquisition date": '2015' },
-      ],
-      skill_items: [
-        { name: 'Network', what: 'Qualified but with little or no work experience', level: 'No work experience' },
-        { name: 'Ansible', what: 'Provisioning of less than 100 servers, testing with molecules, and', level: 'Work experience' },
-        { name: 'Terraform', what: 'AWS, GCP Resource Management', level: 'Work experience' },
-        { name: 'AWS', what: 'Managing and operating your web application infrastructure with AWS', level: 'Work experience' },
-        { name: 'GCP', what: 'Managing and operating your web application infrastructure with GCP', level: 'Work experience' },
-        { name: 'Kubernetes', what: 'Designing, building and operating k8s for Rails applications using GKE', level: 'Work experience' },
-        { name: 'Python3', what: 'Scripts for automating tasks', level: 'Work experience' },
-        { name: 'Django', what: 'Building Web Applications with django', level: 'Work experience' },
-        { name: 'CI/CD', what: 'Building and operating CI/CD pipeline with CircleCI and Gitlab Runner', level: 'Work experience' },
-        { name: 'HTML, CSS, JS', what: 'Building This web site', level: 'hobby' },
-        { name: 'Vue.js', what: 'Building This web site', level: 'hobby' },
-      ],
-      github_link: 'https://github.com/dkuji',
-      twitter_link: 'https://twitter.com/ddkuji',
-      facebook_link: 'https://www.facebook.com/dkuji'
-    }
-  })
+  lang = "";
+  var lang = window.navigator.language || window.navigator.languages || window.navigator.userLanguage || window.navigator.browserLanguage;
+  if (lang == 'ja') {
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        about_me: [
+          { desc: `各種アカウント名はdkuji` },
+          { desc: '2011年からインフラエンジニアのキャリアをスタート'},
+          { desc: 
+            `SIer時代は派遣、業務委託で現場に常駐しオンプレ、仮想、クラウドのサーバ設計、構築を担当
+             Edtechのスタートアップ企業ではクラウドネイティブなインフラの構築・運用・CI/CDを担当
+             通信キャリアでは運用基盤の設計・構築、運用作業の自動化推進を担当`
+          }
+        ],
+        work_experience_c_title: "職務経歴(会社)",
+        work_experience_c_items: [
+          { Period: '2011/4 ~ 2017/8',
+            Corp: '株式会社ボードルア',
+            summary: `多くのプロジェクトで様々な基盤、OSのサーバーの設計・構築、運用、保守を担当`},
+          { Period: '2017/9 ~ 2019/11', Corp: '株式会社manabo', summary: `・「スマホ家庭教師manabo」のGCP、AWSを使用したインフラの構築・運用・保守を担当`},
+          {
+            Period: '2019/12 ~ 2024/6', Corp: 'ソフトバンク株式会社', summary: 
+            `・オンプレミス環境でのCI/CD基盤構築
+            ・Pythonを用いた運用自動化の推進
+            ・Python3、djangoを用いたWebアプリケーション開発
+            ・社内運用基盤のネットワーク、サーバの設計・構築`
+          },
+        ],
+        work_experience_i_title: "職務経歴(フリーランス)",
+        work_experience_i_items: [
+          { Period: '2019/12 ~ now', summary: 
+          `・Google Cloud Platformを利用したインフラ設計・構築
+          ・GKE, Istioを用いたマイクロサービス基盤の設計・構築・運用`},
+          { Period: '2023/01 ~ 2024/2', summary: 
+          `Microsoft Azureを用いたインフラ設計・構築`},
+          { Period: '2023/12 ~ now', summary: 
+          `Google Cloud Platformの導入支援、QA対応業務`},
+        ],
+        cert_title: "取得資格",
+        cert_items: [
+          { sponsor: 'Cisco', name: 'CCNA', "acquisition date": '2010' },
+          { sponsor: 'Cisco', name: 'CCNP', "acquisition date": '2011' },
+          { sponsor: 'IPA', name: 'セキュリティスペシャリスト', "acquisition date": '2015' },
+        ],
+        skill_title: "スキル",
+        skill_what_can_i_do: "何が出来るの？",
+        skill_items: [
+          { name: 'Server', what: 
+          `サーバーの設計、構築
+          基盤: オンプレ、VMware仮想基盤、AWS、GCP、Azure
+          OS: Linux、UNIX、Windows Server`,
+          level: '実務経験あり' },
+          { name: 'Network', what: 'L2, L3(スタティックルート)の設計、構築', level: '実務経験あり' },
+          { name: 'Ansible', what: '100台未満のサーバーのプロビジョニング、分子を使ったテスト、', level: '実務経験あり' },
+          { name: 'Terraform', what: 'AWS, GCP Resource Management', level: '実務経験あり' },
+          { name: 'AWS', what: 'AWSによるWebアプリケーションインフラの管理と運用', level: '実務経験あり' },
+          { name: 'GCP', what: 'GCPによるWebアプリケーションインフラの管理と運用', level: '実務経験あり' },
+          { name: 'Kubernetes', what: 
+          `GKEを使ったk8sの設計、構築、運用
+          オンプレ環境のk8sの設計、構築、運用`
+          , level: '実務経験あり' },
+          { name: 'Docker', what: 
+          `Dockerを使用した開発環境の構築
+          docker-composeを使用した本番環境のシステムの構築
+          k8sで稼働するアプリケーションのためのDockerfile作成`,
+          level: '実務経験あり' },
+          { name: 'shellscript', what: 'タスク自動化のためのスクリプト', level: '実務経験あり' },
+          { name: 'Python3', what: 'タスク自動化のためのスクリプト', level: '実務経験あり' },
+          { name: 'Django', what: 'Webアプリケーションの開発', level: '実務経験あり' },
+          { name: 'CI/CD', what: 'CircleCIとGitlab Runner、Github Actionsを使ったCI/CDパイプラインの構築と運用', level: '実務経験あり' },
+          { name: 'HTML, CSS, JS', what: '本Webサイトの構築', level: '実務経験無し' },
+          { name: 'Vue.js', what: '本Webサイトの構築', level: '実務経験無し' },
+        ],
+        github_link: 'https://github.com/dkuji',
+        twitter_link: 'https://twitter.com/ddkuji',
+        facebook_link: 'https://www.facebook.com/dkuji',
+        linkedin_link: 'https://jp.linkedin.com/in/dkuji',
+      }
+    })
+  } else {
+    console.log('false');
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        about_me: [
+          { desc: 'Hi, I\'m dkuji.' },
+          { desc: 'I\'m Infrastructure developer. Since I started my journey as a developer in 2011,' },
+          { desc: 'I have built infrastructure for many projects with System Integrator. And Edtech Startup builds and operates a cloud-native infrastructure.' }
+        ],
+        work_experience_c_title: "WORK EXPERIENCE(COMPANY)",
+        work_experience_c_items: [
+          { Period: '2011/4 ~ 2017/8', Corp: 'baudroie.inc.', summary: 'I have built, operated and maintained many Linux servers in various corporate systems.' },
+          { Period: '2017/9 ~ 2019/11', Corp: 'manabo inc.', summary: `Building, operating and maintaining manabo\'s infrastructure(use GCP, AWS).\nmanabo is app for real-time, interactive tutoring on demand` },
+          {
+            Period: '2019/12 ~ 2024/6', Corp: 'SoftBank Corp.', summary: `・CI/CD infrastructure in an on-premises environment.\n・Promotion of operation automation using Python 3\n・Web application development using python3, django\n・Design and construction of networks and servers for internal operational infrastructure`
+          },
+        ],
+        work_experience_i_title: "WORK EXPERIENCE(INDIVIDUAL)",
+        work_experience_i_items: [
+          { Period: '2019/12 ~ now', summary: `・Design and build infrastructure using Google Cloud Platform\n・Design, construction, and operation of microservices infrastructure using GKE and Istio`},
+          { Period: '2023/01 ~ now', summary: `Design and build infrastructure using Microsoft Azure`},
+          { Period: '2023/12 ~ now', summary: `Design and build infrastructure using Google Cloud Platform`},
+        ],
+        cert_title: "CERTIFICATE",
+        cert_items: [
+          { sponsor: 'Cisco', name: 'CCNA', "acquisition date": '2010' },
+          { sponsor: 'Cisco', name: 'CCNP', "acquisition date": '2011' },
+          { sponsor: 'IPA', name: 'Security Specialist Examination	', "acquisition date": '2015' },
+        ],
+        skill_title: "SKILL",
+        skill_what_can_i_do: "WHAT CAN I DO?",
+        skill_items: [
+          { name: 'Server', what: 
+          `Designing, building Server
+          Infrastructure: onpremises, VMwre, AWS, GCP, Azure
+          OS: Linux, UNIX, Windows
+          `, level: 'Work experience' },
+          { name: 'Network', what: 'Designing, building L2, L3(static routing) network', level: 'Work experience' },
+          { name: 'Ansible', what: 'Provisioning of less than 100 servers, testing with molecules, and', level: 'Work experience' },
+          { name: 'Terraform', what: 'AWS, GCP Resource Management', level: 'Work experience' },
+          { name: 'AWS', what: 'Managing and operating your web application infrastructure with AWS', level: 'Work experience' },
+          { name: 'GCP', what: 'Managing and operating your web application infrastructure with GCP', level: 'Work experience' },
+          { name: 'Kubernetes', what: 'Designing, building and operating k8s for Rails applications using GKE', level: 'Work experience' },
+          { name: 'shellscript', what: 'Scripts for automating tasks', level: 'Work experience' },
+          { name: 'Python3', what: 'Scripts for automating tasks', level: 'Work experience' },
+          { name: 'Django', what: 'Building Web Applications with django', level: 'Work experience' },
+          { name: 'CI/CD', what: 'Building and operating CI/CD pipeline with CircleCI and Gitlab Runner', level: 'Work experience' },
+          { name: 'HTML, CSS, JS', what: 'Building This web site', level: 'No work experience' },
+          { name: 'Vue.js', what: 'Building This web site', level: 'No work experience' },
+        ],
+        github_link: 'https://github.com/dkuji',
+        twitter_link: 'https://twitter.com/ddkuji',
+        facebook_link: 'https://www.facebook.com/dkuji',
+        linkedin_link: 'https://jp.linkedin.com/in/dkuji',
+      }
+    })
+  }
 </script>
+
+<script src="https://kit.fontawesome.com/6a7bc4dc3d.js" crossorigin="anonymous"></script>
