@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div id="app" v-cloak>
+  <div id="app" v-cloak class="bg-dark text-light">
     <div class="fixed-top">
       <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -39,9 +39,10 @@
     </div>
 
     <div class="container pl-lg-5 pr-lg-5 mb-5">
-      <div class="bg-white">
-        <p id="profile" class="h2 text-center pb-5">PROFILE</p>
-        <p class="h3 text-muted text-center">ABOUT ME</p>
+      <div class="">
+        <p id="profile" class="h2 text-center">PROFILE</p>
+        <hr>
+        <p class="h3 text-center mt-5">ABOUT ME</p>
         <div class="mb-5" style="white-space:pre-line; word-wrap:break-word;">
           <b-container fluid>
             <b-row class="justify-content-md-center text-break">
@@ -60,17 +61,17 @@
           </b-container>
         </div>
         <!-- <p class="h3 text-muted text-center">WORK EXPERIENCE(COMPANY) </p> -->
-        <p class="h3 text-muted text-center">{{ work_experience_c_title }}</p>
+        <p class="h3 text-center text-light">{{ work_experience_c_title }}</p>
         <template>
           <div>
-            <b-table class="mb-5" responsive striped :items="work_experience_c_items"
+            <b-table class="mb-5" dark responsive striped :items="work_experience_c_items"
               style="white-space:pre-line; word-wrap:break-word;"></b-table>
           </div>
         </template>
-        <p class="h3 text-muted text-center">{{ work_experience_i_title }}</p>
+        <p class="h3 text-center">{{ work_experience_i_title }}</p>
         <template>
           <div>
-            <b-table responsive striped :items="work_experience_i_items"
+            <b-table dark responsive striped :items="work_experience_i_items"
               style="white-space:pre-line; word-wrap:break-word;"></b-table>
           </div>
         </template>
@@ -78,28 +79,30 @@
     </div>
 
     <div class="container pl-lg-5 pr-lg-5 mb-5">
-      <div class="container bg-white pb-5">
-        <p id="skill" class="h2 text-center pb-5">{{ skill_title }}</p>
-        <p class="h3 text-muted text-center">{{ skill_what_can_i_do }}</p>
+      <div class="container text-light pb-5">
+        <p id="skill" class="h2 text-center">{{ skill_title }}</p>
+        <hr>
+        <p class="h3 text-center mt-5">{{ skill_what_can_i_do }}</p>
         <template>
           <div>
-            <b-table responsive striped :items="skill_items" style="white-space:pre-line; word-wrap:break-word;"></b-table>
+            <b-table dark responsive striped :items="skill_items" style="white-space:pre-line; word-wrap:break-word;"></b-table>
           </div>
         </template>
       </div>
-      <div class="container bg-white">
-        <p class="h3 text-muted text-center">{{ cert_title }}</p>
+      <div class="container text-light text-light pb-5">
+        <p class="h3 text-center">{{ cert_title }}</p>
         <template>
           <div>
-            <b-table responsive striped :items="cert_items"></b-table>
+            <b-table dark responsive striped :items="cert_items"></b-table>
           </div>
         </template>
       </div>
     </div>
 
     <div class="container pl-lg-5 pr-lg-5 mb-5">
-      <div class="bg-white">
+      <div class="">
         <p id="link" class="h2 text-center">LINK</p>
+        <hr>
         <b-row class="text-center">
           <b-col class="pb-5">
             <a :href="github_link"><i class="fab fa-github-square fa-3x pl-3 pr-3"></i></a>
@@ -111,9 +114,10 @@
       </div>
     </div>
 
-    <div class="container pl-lg-5 pr-lg-5 mb-5 text-center">
-      <div class="bg-white pb-5">
+    <div class="container pl-lg-5 pr-lg-5 text-center">
+      <div class="pb-5">
         <p id="contact" class="h2 text-center">CONTACT</p>
+        <hr>
         <p>For job offers, please contact me on Twitter DM.</p>
       </div>
     </div>
